@@ -1,2 +1,2 @@
 # SQL-SERVER-com-BI
-Este repositório contém um projeto utilizando o SQL Server, e o Visual Studio 2015.
+Este repositório contém um projeto utilizando o SQL Server, e o Visual Studio 2015 (Business intelligence, Reporting Services, Integration Services, Analysis Services)
