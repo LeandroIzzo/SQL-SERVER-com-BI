@@ -660,6 +660,7 @@ Nesta etapa será criado o projeto no visual studio 2015, e realizar as extraç�
 ![VSCONEXÃO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%203,2%20-%20ESCOLHENDO%20AS%20CONEX%C3%95ES.png?raw=true)
 - NAME SERVER: DIGITE UM "." OU SEU "NOME DO SERVIDOR";
 - ESCOLHA AS CONEXÕES COM O OLTP E STAGE.
+
 ***
 
 ### CRIAÇÃO DO PACOTE
@@ -711,7 +712,7 @@ CRIE O OLE DB DESTINATION
 ***
 
 #### CRIAÇÃO DA CARGA FUNCIONARIO:
-O processo de criação das cargas será basicamente o mesmo, excluindo a coluna derivada.
+O processo de criação das cargas será basicamente o mesmo, excluindo a coluna derivada feita na carga clientes.
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - EXECUTE SQL TASK: Feito o truncate table na tabela st_funcionarios;
 - DATA FLOW TASK: Area do fluxo de dados;
