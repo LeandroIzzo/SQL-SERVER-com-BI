@@ -716,31 +716,66 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - EXECUTE SQL TASK: Feito o truncate table na tabela st_funcionarios;
 - DATA FLOW TASK: Area do fluxo de dados;
+
 ![VSFUNC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%206%20-%20CARGA%20FUNCIONARIO.png?raw=true)
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela funcionarios no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_funcionarios no banco STAGE.
+
 ![VSFUNC2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%206,2%20-%20FLUXO%20DOS%20DADOS%20FUNC.png?raw=true)
+***
 
 #### CRIAÇÃO DA CARGA CATEGORIAS:
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - EXECUTE SQL TASK: Feito o truncate table na tabela st_categorias;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
+
 ![VSCATG1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%207%20-%20CARGA%20CATEGORIAS.png?raw=true)
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela categorias no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_categorias banco STAGE.
+
 ![VSCATG2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%207,2%20-%20FLUXO%20DOS%20DADOS%20CATEGORIAS.png?raw=true)
+***
 
 #### CRIAÇÃO DA CARGA SUBCATEGORIAS:
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - EXECUTE SQL TASK: Feito o truncate table na tabela st_subcategorias;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
+
 ![VSSUB1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%208%20-%20CARGA%20SUB.png?raw=true)
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela sub_categorias no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_subcategorias banco STAGE.
+
 ![VSSUB2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%208,2%20-%20FLUXO%20DOS%20DADOS%20SUB.png?raw=true)
+***
+
+#### CRIAÇÃO DA CARGA x:
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- EXECUTE SQL TASK: Feito o truncate table na tabela st_x;
+- DATA FLOW TASK: Leva a Area do fluxo de dados;
+
+![VSX](X)
+
+- OLE DB SOURCE: Origem dos dados, vindo da tabela X no banco OLTP;
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_X banco STAGE.
+
+![VSX](X)
+***
+
+#### CRIAÇÃO DA CARGA x:
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- EXECUTE SQL TASK: Feito o truncate table na tabela st_x;
+- DATA FLOW TASK: Leva a Area do fluxo de dados;
+
+![VSX](X)
+
+- OLE DB SOURCE: Origem dos dados, vindo da tabela X no banco OLTP;
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_X banco STAGE.
+
+![VSX](X)
+***
 
 
 
