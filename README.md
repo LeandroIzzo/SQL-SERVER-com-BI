@@ -482,7 +482,7 @@ Houve uma mudança nos requisitos e eles desejam que o nome e sobrenome do clien
 ## MODELAGEM STAGE
 ![modelagemSTAGE](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/MOGELAGEM%20DE%20DADOS/2.%20MODELAGEM%20STAGING%20AREA.jpg?raw=true)
 
-##### CRIAÇÃO DO DATABASE DA STAGE:
+### CRIAÇÃO DO DATABASE DA STAGE:
 ```
 CREATE DATABASE LOJA_STAGE
 GO
@@ -573,7 +573,7 @@ CREATE TABLE ST_METODOS(
 )
 GO
 ```
-#### CRIAÇÃO DA TABELA FATO NO STAGE:
+### CRIAÇÃO DA TABELA FATO NO STAGE:
 OBS: FATO -> SÃO AS MEDIDAS DO NEGOCIO
 -- TOTAL
 -- QUANTIDADE
@@ -600,8 +600,8 @@ CREATE TABLE ST_FATO(
 GO
 ```
 
-### VIEW, RELATORIO COMPLETO DA TABELA FATO
-OBS: SERÁ USADO COMO A CARGA DA TABELA FATO
+### VIEW COMPLETO DA TABELA FATO
+OBS: SERÁ USADO COMO A CARGA DA TABELA FATO.
 
 ```
 CREATE VIEW RELATORIO_VENDAS_FATO AS
@@ -640,6 +640,29 @@ INNER JOIN MARCAS MA
 ON MA.IDMARCA = P.ID_MARCA
 GO
 ```
+
+# ETAPA 6 - PROCESSOS DE ETL (VISUAL STUDIO 2015 - INTEGRATION SERVICES)
+Nesta etapa será criado o projeto no visual studio 2015, e realizar as extrações, transformações e carregamento dos dados.
+
+***
+#### CRIANDO O PROJETO
+![VSPROJETO]()
+***
+
+#### CRIAÇÃO DA SOLUTION
+![VSSOLUTION]()
+***
+
+#### GERENCIANDO CONEXÕES
+![VSCONEXÃO]()
+***
+
+
+
+
+
+
+
 
 
 
