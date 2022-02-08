@@ -1,19 +1,19 @@
 # SQL SERVER COM BUSINESS INTELLIGENCE
 Este repositório contém um projeto utilizando o SQL Server, e o Visual Studio 2015 (Business intelligence, Reporting Services, Integration Services, Analysis Services).
+Esse é um projeto de estudo. Os scripts construidos foram feitos no Microsoft SQL Server Management Studio. As modelagens foram feitas no StarUML. E os processos de ETL foram feitos no Visual Studio 2015.
 
 # INTRODUÇÃO
-Esse é um projeto de estudo. Os scripts construidos foram feitos de acordo com o Microsoft SQL Server Management Studio. As modelagens foram feitas no StarUML.
+A loja musical necessita armazenar o seus funcionários, metodos de pagamento, o cadastro de clientes, produtos, fornecedores, marcas, categorias, subcategorias,
+os protudos das notas fiscais, e as notas fiscais. Também querem guardar seus dados de vendas, custos e lucros. Não importando saber quem vendeu ou quantas vendas cada funcionário fez. Eles desejam saber em que época do ano tem mais vendas e também em quais meses. Gostariam de ter uma análise de vendas por categoria, subcategoria e marcas.
 
 # OBJETIVO
-O objetivo deste projeto é demonstrar a criação de um banco de dados relacional de uma loja musical. 
-A loja musical necessita armazenar o seus funcionarios, metodos de pagamento, o cadastro de clientes, produtos, fornecedores, marcas, categorias, subcategorias,
-os protudos das notas fiscais, e as notas fiscais. Também querem guardar seus dados de vendas, custos e lucros.
+O objetivo deste projeto é demonstrar a criação de um banco de dados relacional de uma loja musical. Fazendo a criação do Ambiente OLTP, Staging Area, Datawarehouse, Ambiente OLAP, CUBO(Analysis Services), Reporting Services para atender todas as necessidades da loja.
+
+# ETAPA 1 - CRIAÇÃO DO AMBIENTE OLTP
+Nesta primeira etapa, será criado o database, e a estrutura das tabelas com base na modelagem.
 
 # MODELAGEM OLTP
 ![modelagemOLTP](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/MOGELAGEM%20DE%20DADOS/1.%20MODELAGEM%20OLTP.jpg?raw=true)
-
-# ETAPA 1 - CRIAÇÃO DO AMBIENTE OLTP
-Nesta primeira etapa, será criado o database, e a estrutura de tabelas com base na modelagem.
 
 CRIAÇÃO DA DATABASE DA LOJA MUSICAL (OLTP):
 ```
@@ -216,7 +216,7 @@ GO
 
 # ETAPA 3 - ADICIONANDO DADOS
 Nesta etapa iremos adicionar os dados de todas as tabelas.
-OBS: Os dados completos estão na pasta scripts.
+OBS: Os dados completos de todas as tabelas, estão na pasta scripts.
 
 ADICIONANDO DADOS NA TABELA CATEGORIAS:
 ```
@@ -474,3 +474,17 @@ SOMA = TOTAL DA NOTA
 UPDATE V_CARGA_NOTAFISCAL SET TOTAL_NOTA = SOMA
 GO
 ```
+
+# ETAPA 5 - STAGING AREA
+Nesta etapa iremos realizar os processos de ETL de acordo com as necessidades da loja musical.
+Houve uma mudança nos requisitos e eles desejam que o nome e sobrenome do cliente, estejam na mesma coluna como nome completo.
+
+# MODELAGEM STAGE
+![modelagemSTAGE]()
+
+
+
+
+
+
+
