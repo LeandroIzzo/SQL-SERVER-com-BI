@@ -646,7 +646,7 @@ ON MA.IDMARCA = P.ID_MARCA
 GO
 ```
 
-# ETAPA 6 - PROCESSOS DE ETL OLTP PARA STAGING (VISUAL STUDIO 2015 - INTEGRATION SERVICES)
+# ETAPA 6 - PROCESSOS DE ETL OLTP PARA STAGING (VISUAL STUDIO 2015)
 Nesta etapa será criado o projeto no visual studio 2015, e realizar as extrações, transformações e carregamento dos dados.
 
 ***
@@ -1193,6 +1193,10 @@ PRINT GETDATE()
 		DEALLOCATE C_TEMPO
 		GO
 ```
+
+# ETAPA 10 -  PROCESSOS DE ETL STAGING PARA DATA WAREHOUSE (VISUAL STUDIO 2015)
+Nesta etapa iremos realizar as extrações, transformações e carregamento dos dados do Staging Area para o DW.
+
 
 
 
