@@ -810,7 +810,7 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 ![VSX2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/12%20-%20CARGA%20NOTAS.png?raw=true)
 ***
 
-#### CRIAÇÃO DA CARGA x:
+#### CRIAÇÃO DA CARGA PRODUTOS:
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_x;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
