@@ -601,9 +601,14 @@ GO
 ```
 
 ### VIEW COMPLETO DA TABELA FATO
+CRIADO NO BANCO OLTP
 OBS: SERÁ USADO COMO A CARGA DA TABELA FATO.
 
+
 ```
+USE LOJA_INSTRUMENTOS_OLTP
+GO
+
 CREATE VIEW RELATORIO_VENDAS_FATO AS
 SELECT  C.IDCLIENTE,
 		F.IDFUNCIONARIO,
@@ -789,12 +794,12 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_metodos;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSX1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/11%20-%20CARGA%20METODOS.png?raw=true)
+![VSMETODOS1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/11%20-%20CARGA%20METODOS.png?raw=true)
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela Metodo_pagamento no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_metodos banco STAGE.
 
-![VSX2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/11.2%20-%20FLUXO%20METODOS.png?raw=true)
+![VSMETODOS2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/11.2%20-%20FLUXO%20METODOS.png?raw=true)
 ***
 
 #### CRIAÇÃO DA CARGA NOTAS:
@@ -802,38 +807,38 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_notas;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSX1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/12%20-%20CARGA%20NOTAS.png?raw=true)
+![VSNOTAS1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/12%20-%20CARGA%20NOTAS.png?raw=true)
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela Nota_Fiscal no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_notas banco STAGE.
 
-![VSX2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/12%20-%20CARGA%20NOTAS.png?raw=true)
+![VSNOTAS2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/12%20-%20CARGA%20NOTAS.png?raw=true)
 ***
 
 #### CRIAÇÃO DA CARGA PRODUTOS:
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
-- EXECUTE SQL TASK: Será feito o truncate table na tabela st_x;
+- EXECUTE SQL TASK: Será feito o truncate table na tabela st_produtos;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSX1](x)
+![VSPROD1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/13%20-%20CARGA%20PRODUTOS.png?raw=true)
 
-- OLE DB SOURCE: Origem dos dados, vindo da tabela X no banco OLTP;
-- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_Xs banco STAGE.
+- OLE DB SOURCE: Origem dos dados, vindo da tabela Produtos no banco OLTP;
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_produtoss banco STAGE.
 
-![VSX2](X)
+![VSPROD2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/13.2%20-%20FLUXO%20PRODUTOS.png?raw=true)
 ***
 
-#### CRIAÇÃO DA CARGA x:
+#### CRIAÇÃO DA CARGA FATO:
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
-- EXECUTE SQL TASK: Será feito o truncate table na tabela st_x;
+- EXECUTE SQL TASK: Será feito o truncate table na tabela st_fato;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSX1](x)
+![VSFATO1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/14%20-%20CARGA%20FATO.png?raw=true)
 
-- OLE DB SOURCE: Origem dos dados, vindo da tabela X no banco OLTP;
-- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_Xs banco STAGE.
+- OLE DB SOURCE: Origem dos dados, vindo da view RELATORIO_VENDAS_FATO criada anteriormente no banco OLTP;
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela st_FATO banco STAGE.
 
-![VSX2](X)
+![VSFATO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/14.2%20-%20FLUXO%20FATO.png?raw=true)
 ***
 
 
