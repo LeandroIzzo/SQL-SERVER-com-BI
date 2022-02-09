@@ -646,47 +646,48 @@ Nesta etapa será criado o projeto no visual studio 2015, e realizar as extraç�
 
 ***
 ### CRIANDO O PROJETO
-![VSPROJETO](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%201%20-%20CRIA%C3%87%C3%83O%20DO%20PROJETO.png?raw=true)
+![VSPROJETO](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/01%20-%20CRIA%C3%87%C3%83O%20DO%20PROJETO.png?raw=true)
 ***
 
 ### CRIAÇÃO DA SOLUTION
-![VSSOLUTION](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%202%20-%20CRIA%C3%87%C3%83O%20DA%20SOLUTION.png?raw=true)
+![VSSOLUTION](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/02%20-%20CRIA%C3%87%C3%83O%20DA%20SOLUTION.png?raw=true)
 ***
 
 ### GERENCIANDO CONEXÕES
-![VSCONEXÃO](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%203%20-%20GERENCIANDO%20CONEX%C3%95ES.png?raw=true)
+![VSCONEXÃO](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/03%20-%20GERENCIANDO%20CONEX%C3%95ES.png?raw=true)
 - NOVA...
 
-![VSCONEXÃO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%203,2%20-%20ESCOLHENDO%20AS%20CONEX%C3%95ES.png?raw=true)
+![VSCONEXÃO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/03.2%20-%20ESCOLHENDO%20AS%20CONEX%C3%95ES.png?raw=true)
 - NAME SERVER: DIGITE UM "." OU SEU "NOME DO SERVIDOR";
 - ESCOLHA AS CONEXÕES COM O OLTP E STAGE.
 
 ***
 
 ### CRIAÇÃO DO PACOTE
-![VSPACOTE](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%204%20-%20CRIA%C3%87%C3%83O%20DO%20NOVO%20PACOTE.png?raw=true)
+![VSPACOTE](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/04%20-%20CRIA%C3%87%C3%83O%20DO%20NOVO%20PACOTE.png?raw=true)
 - TROQUE O NOME DO PACOTE EX: CARGA CLIENTE.
 ***
 
 ### CRIAÇÃO DA CARGA CLIENTES:
-![VSCLIENTE](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205%20-%20SQL%20TASK.png?raw=true)
+![VSCLIENTE]()
 
 - SEQUENCE CONTAINER: TODOS OS PROCESSOS SERÃO FEITOS DENTRO DE UM CONTAINER;
-- EXECUTE SQL TASK: SERÁ EXECUTADO UM TRUNCATE TABLE "NOME DA TABELA STAGE";
-- INSTRUÇÃO SQL, DENTRO DO SQL TASK: DEFINA A CONEXÃO COM O STAGE E ESPECIFIQUE A CONSULTA A SER EXECUTADA.
+- EXECUTE SQL TASK: SERÁ EXECUTADO UM TRUNCATE TABLE "NOME DA TABELA STAGE".
 
-![VSCLIENTE2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,2%20-%20CONNECTION%20E%20SQLSTATEMENT.png?raw=true)
-
+![VSCLIENTE2]()
+- INSTRUÇÃO SQL: DEFINA A CONEXÃO COM O STAGE E ESPECIFIQUE A CONSULTA A SER EXECUTADA.
+ 
 #### CRIAÇÃO DO DATA FLOW TASK
 - JOGUE O "EXECUTE SQL TASK" E O "DATA FLOW TASK" DENTRO DO CONTAINER.
-![VSCLIENTE3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,4%20-%20CONTAINER.png?raw=true)
+![VSCLIENTE3]()
 
 - LIGUE O "EXECUTE SQL TASK" COM O "DATA FLOW TASK".
+![VSCLIENTE4]()
 
-![VSCLIENTE4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,3%20-%20DATA%20FLOW%20TASK.png?raw=true)
+
 - OLE DB SOURCE: CRIE A ORIGEM DOS DADOS.
 
-![VSCLIENTE5](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,4%20-%20CONEX%C3%83O%20OLE%20DB.png?raw=true)
+![VSCLIENTE5]()
 - GERENCIADOR DE CONEXÕES: SELECIONE O DATABASE DA ORIGEM DOS DADOS;
 - TABELA OU VIEW: SELECIONE A TABELA DA CARGA;
 OBS: O MODO DE ACESSO PODE SER ALTERADO PARA "COMANDO DO SQL" E ENTÃO FEITO UM SELECT COM TODAS AS COLUNAS DA TABELA.
@@ -694,7 +695,7 @@ OBS: O MODO DE ACESSO PODE SER ALTERADO PARA "COMANDO DO SQL" E ENTÃO FEITO UM 
 #### JUNÇÃO DO NOME COM SOBRENOME
 - FAÇA A LIGAÇÃO DO "OLE DB SOURCE" COM "COLUNA DERIVADA".
 
-![VSCLIENTE6](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,5%20-%20COLUNA%20DERIVADA%20(NOME%20COMPLETO).png?raw=true)
+![VSCLIENTE6]()
 - NOME DA COLUNA DERIVADA: SERÁ O NOME DA NOVA COLUNA;
 - EXPRESSÃO: AÇÃO A SER EXECUTADA, JUNTAR O NOME COM SOBRENOME.
 
@@ -703,12 +704,12 @@ CRIE O OLE DB DESTINATION
 - OLE DB DESTINATION: DESTINO DOS DADOS;
 - LIGUE "COLUNA DERIVADA" COM "OLE DB DESTINATION".
 
-![VSCLIENTE7](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,6%20-%20DESTINO%20DOS%20DADOS.png?raw=true)
+![VSCLIENTE7]()
 - GERENCIADOR DE CONEXÕES: SELECIONE A DATABASE DO DESTINO DOS DADOS;
 - TABELA OU EXIBIÇÃO/VIEW: SELECIONE A TABELA DESTINO;
 - OK.
 
-![VSCLIENTE8](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%205,7%20-%20FINAL%20CLIENTE.png?raw=true)
+![VSCLIENTE8]()
 ***
 
 #### CRIAÇÃO DA CARGA FUNCIONARIO:
@@ -717,12 +718,12 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_funcionarios;
 - DATA FLOW TASK: Area do fluxo de dados;
 
-![VSFUNC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%206%20-%20CARGA%20FUNCIONARIO.png?raw=true)
+![VSFUNC1]()
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela funcionarios no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_funcionarios no banco STAGE.
 
-![VSFUNC2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%206,2%20-%20FLUXO%20DOS%20DADOS%20FUNC.png?raw=true)
+![VSFUNC2]()
 ***
 
 #### CRIAÇÃO DA CARGA CATEGORIAS:
@@ -730,12 +731,12 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_categorias;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSCATG1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%207%20-%20CARGA%20CATEGORIAS.png?raw=true)
+![VSCATG1]()
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela categorias no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_categorias banco STAGE.
 
-![VSCATG2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%207,2%20-%20FLUXO%20DOS%20DADOS%20CATEGORIAS.png?raw=true)
+![VSCATG2]()
 ***
 
 #### CRIAÇÃO DA CARGA SUBCATEGORIAS:
@@ -743,12 +744,12 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 - EXECUTE SQL TASK: Será feito o truncate table na tabela st_subcategorias;
 - DATA FLOW TASK: Leva a Area do fluxo de dados;
 
-![VSSUB1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%208%20-%20CARGA%20SUB.png?raw=true)
+![VSSUB1]()
 
 - OLE DB SOURCE: Origem dos dados, vindo da tabela sub_categorias no banco OLTP;
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela st_subcategorias banco STAGE.
 
-![VSSUB2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PRINT/PASSO%208,2%20-%20FLUXO%20DOS%20DADOS%20SUB.png?raw=true)
+![VSSUB2]()
 ***
 
 #### CRIAÇÃO DA CARGA x:
