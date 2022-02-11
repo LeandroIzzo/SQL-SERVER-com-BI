@@ -1277,7 +1277,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSFUNCDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/17.2%20-%20FLUXO%20DW%20FUNCIONARIOS.png?raw=true)
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_FUNCIONARIOS no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
@@ -1291,7 +1291,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 
 ### CRIAÇÃO DA CARGA X NO DW:
@@ -1304,21 +1304,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
-- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
-***
-
-### CRIAÇÃO DA CARGA X NO DW:
-
-![VSX1]()
-- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
-- DATA FLOW TASK: Area do fluxo de dados;
-- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
-
-![VSX2]()
-- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
-	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
@@ -1332,7 +1318,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
@@ -1346,7 +1332,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
@@ -1360,7 +1346,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
@@ -1374,7 +1360,21 @@ Foi utilizado o mesmo processo em todas as cargas.
 ![VSX2]()
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas de relevancia para o negócio, e a tabela do STAGE;
 - DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
 ***
 
