@@ -833,6 +833,13 @@ O processo de criação das cargas será basicamente o mesmo, excluindo a coluna
 
 ***
 
+## APÓS A CRIAÇÃO DAS CARGA:
+Após a criação de todas as cargas, execute uma por uma.
+
+![VSEXEC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/14.3%20-%20EXECU%C3%87%C3%83O%20DOS%20PACOTES.png?raw=true)
+
+***
+
 # ETAPA 7 - DATA WAREHOUSE E SUAS DIMENSÕES
 Nesta etapa iremos transformar as tabelas em dimensões. Criaremos o inicio e o fim do "registro", e usaremos a IDSK(Surrogate key) como chave primaria. 
 
@@ -989,8 +996,9 @@ CREATE TABLE FATO(
 )
 GO
 ```
+***
 
-# ETAPA 8 - RELACIONAMENTO ENTRE AS TABELAS
+# ETAPA 8 - RELACIONAMENTO ENTRE AS TABELAS/DIMENSÕES
 Nesta etapa iremos adicionar as FKs na tabela FATO dentro do DW.
 ```
 ALTER TABLE FATO ADD CONSTRAINT FK_FATO_NOTAS
@@ -1033,6 +1041,7 @@ ALTER TABLE FATO ADD CONSTRAINT FK_FATO_TEMPO
 FOREIGN KEY (ID_TEMPO) REFERENCES DIM_TEMPO(IDSK)
 GO
 ```
+***
 
 # ETAPA 9 - DIMENSÃO TEMPO
 Nesta etapa iremos realizar o preenchimento da dimensão tempo.
@@ -1193,9 +1202,184 @@ PRINT GETDATE()
 		DEALLOCATE C_TEMPO
 		GO
 ```
+***
 
 # ETAPA 10 -  PROCESSOS DE ETL STAGING PARA DATA WAREHOUSE (VISUAL STUDIO 2015)
 Nesta etapa iremos realizar as extrações, transformações e carregamento dos dados do Staging Area para o DW.
+
+### GERENCIANDO A CONEXÃO COM O DW
+![VSCONEXÃODW](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/03%20-%20GERENCIANDO%20CONEX%C3%95ES.png?raw=true)
+CLIQUE EM "NOVA..."
+
+![VSCONEXÃODW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/15%20-%20CONEX%C3%83O%20DW.png?raw=true)
+- NAME SERVER: DIGITE UM "." OU SEU "NOME DO SERVIDOR";
+- ADICIONE A CONEXÃO COM O DW.
+
+***
+
+### CRIAÇÃO DA CARGA CLIENTES NO DW:
+Será criado um "countainer" com o "data flow task" praticamente igual o processo do stage.
+![VSCLIENTESDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16%20-%20CARGA%20DW%20CLIENTES.png?raw=true)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSCLIENTESDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.2%20-%20EDITOR%20DE%20ORIGEM%20OLE%20DB.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_CLIENTES no STAGE;
+- GERENCIADOR DE CONEXÕES OLE DB: Será colocado o local que vem os dados;
+- MODO DE ACESSO AOS DADOS: Comando SQL;
+- TEXTO DO COMANDO SQL: Um select com as colunas e a tabela do STAGE.
+
+#### SLOWLY CHAGING DIMENSION:
+Criação de uma Dimensão de Alteração Lenta. Onde o O ID será transformado em chave de negocio. E será definido o tipo das colunas entre: Historico, fixo, de alteração
+
+![VSCLIENTESDW3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.3%20-%20SCD.png?raw=true)
+- LIGAÇÃO: Ligação entre "OLE DB SOURCE" com "SLOWLY CHAGING DIMENSION";
+- GERENCIADOR DE CONEXÕES: Banco de dados do DW;
+- TABELA OU EXIBIÇÃO: Tabela destino dos Dados;
+- KEY TYPE: Troca o tipo da chave.
+
+![VSCLIENTESDW4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.4%20-%20DIM_COLUNAS%20E%20ALTERA%C3%87%C3%83O%20DE%20TIPO.png?raw=true)
+- COLUNAS DE DIMENSÃO: As colunas usadas na dimensão;
+- ALTERAR TIPO: Escolhe o tipo entre Historico, fixo, de alteração.
+
+![VSCLIENTESDW5](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.5%20-%20INICIO%20E%20FIM.png?raw=true)
+System::ContainerStarTime | System::CreationDate | System::StarTime
+- START DATE COLUMN: Coluna de INICIO do registro;
+- END DATE COLUMN: Coluna de FIM do registro;
+- VARIABLE TO SET DATE VALUES: Variavel que define o valor de DATA. Será usado System::StarTime (Data que o pacote rodou).
+
+#### SEM SUPORTE:
+
+![VSCLIENTESDW5](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.6%20-%20Sem%20suporte.png?raw=true)
+- AVANÇAR >
+
+#### CONCLUSÃO DOS PASSOS DO SLOWLY CHAGING DIMENSION(SCD):
+
+![VSCLIENTESDW6](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.7%20-%20CONCLUS%C3%83O%20DO%20SCD.png?raw=true)
+- CONCLUIR
+
+#### FIM DA CARGA CLIENTES NO DW:
+
+![VSCLIENTESDW7](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.8%20-%20FIM%20DA%20CARGA.png?raw=true)
+- OLE DB DESTINATION: Destino dos dados, indo para a dimensão DIM_CLIENTES no banco do DW.
+
+***
+
+### CRIAÇÃO DA CARGA FUNCIONARIOS NO DW:
+Foi utilizado o mesmo processo em todas as cargas.
+
+![VSFUNCDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/17%20-%20CARGA%20DW%20FUNCIONARIOS.png?raw=true)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSFUNCDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/17.2%20-%20FLUXO%20DW%20FUNCIONARIOS.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_FUNCIONARIOS no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSX1]()
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSX2]()
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL: Um select com as colunas desejadas, e a tabela do STAGE;
+- DIMENSÃO DE ALTERAÇÃO LENTA: Transformação do ID para chave de negócio, definição do tipo de colunas, definição da data(INICIO,FIM).
+***
+
+
+
 
 
 
