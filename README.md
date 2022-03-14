@@ -1513,6 +1513,7 @@ AS
 Dentro do "EXECUTE SQL TASK"
 
 ![VSFATODW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/25.2%20-%20FLUXO%20DW%20FATO.png?raw=true)
+
 SQLStatement: Digite o comando para executar a procedure criada "EXEC CARGA_FATODW"
 
 ***
