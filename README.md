@@ -1230,7 +1230,7 @@ Será criado um "countainer" com o "data flow task" praticamente igual o process
 - MODO DE ACESSO AOS DADOS: Comando SQL;
 - TEXTO DO COMANDO SQL: Um select com as colunas e a tabela do STAGE.
 
-#### SLOWLY CHAGING DIMENSION:
+### SLOWLY CHAGING DIMENSION:
 Criação de uma Dimensão de Alteração Lenta. Onde o O ID será transformado em chave de negocio. E será definido o tipo das colunas entre: Historico, fixo, de alteração
 
 ![VSCLIENTESDW3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/16.3%20-%20SCD.png?raw=true)
@@ -1382,19 +1382,38 @@ As cargas que possuem INICIO, FIM devem ser feitas com a "DIMENSÃO DE ALTERAÇ�
 
 ### CRIAÇÃO DA CARGA X NO DW:
 
+![VSSUBDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/24%20-%20CARGA%20DW%20SUBCATEGORIAS.png?raw=true)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSSUBDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/24.2%20-%20FLUXO%20DW%20SUBCATEGORIAS.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_SUBCATEGORIAS no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL:
+	SELECT [IDSUB], [SUB_CATEGORIA] FROM [LOJA_STAGE].[dbo].[ST_SUBCATEGORIAS]
+	WHERE IDSUB NOT IN
+	(SELECT IDSUB FROM LOJA_DW.DBO.DIM_SUBCATEGORIAS)
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_SUBCATEGORIAS no DW.
+***
+
+### CRIAÇÃO DA CARGA FATO NO DW:
+
 ![VSXDW1](X)
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - DATA FLOW TASK: Area do fluxo de dados;
 - LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
 
-![VSXDW2](X)
-- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
-	- MODO DE ACESSO AOS DADOS: Comando SQL;
-	- TEXTO DO COMANDO SQL:
-
-- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_X no DW.
 ***
 
+### CRIAÇÃO DA CARGA X NO DW:
+
+![VSXDW1](X)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+***
 
 
 
