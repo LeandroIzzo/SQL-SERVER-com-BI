@@ -1310,6 +1310,7 @@ Foi utilizado o mesmo processo em todas as cargas.
 ***
 
 ### CRIAÇÃO DA CARGA CATEGORIAS NO DW:
+As cargas que possuem INICIO, FIM devem ser feitas com a "DIMENSÃO DE ALTERAÇÃO LENTA", já as que não possuem, devem usar um SQL de interseção.
 
 ![VSCATGDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/20%20-%20CARGA%20DW%20CATEGORIAS.png?raw=true)
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
@@ -1328,36 +1329,71 @@ Foi utilizado o mesmo processo em todas as cargas.
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_cATEGORIAS no DW.
 ***
 
-### CRIAÇÃO DA CARGA X NO DW:
+### CRIAÇÃO DA CARGA MARCAS NO DW:
  Mesmo padrão da carga CATEGORIAS
-![VSX1]()
+![VSMARDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/21%20-%20CARGA%20DW%20MARCAS.png?raw=true)
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - DATA FLOW TASK: Area do fluxo de dados;
 - LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
 
-![VSX2]()
-- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
+![VSMARDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/21.2%20-%20FLUXO%20DW%20MARCAS.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_MARCAS no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
 	- TEXTO DO COMANDO SQL:
-	
-- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_X no DW.
+	SELECT IDMARCA, MARCA FROM ST_MARCAS
+	WHERE IDMARCA NOT IN
+	(SELECT IDMARCA FROM LOJA_DW.DBO.DIM_MARCAS)
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_MARCAS no DW.
+***
+
+### CRIAÇÃO DA CARGA METODOS NO DW:
+
+![VSMETDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/22%20-%20CARGA%20DW%20METODOS.png?raw=true)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSMETDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/22.2%20-%20FLUXO%20DW%20METODOS.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_METODOS no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL:
+	SELECT IDMETODO, FORMA_PAGAMENTO FROM ST_METODOS
+	WHERE IDMETODO NOT IN
+	(SELECT IDMETODO FROM LOJA_DW.DBO.DIM_METODOS)
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_METODOS no DW.
+***
+
+### CRIAÇÃO DA CARGA NOTAS NO DW:
+
+![VSNOTASDW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/23%20-%20CARGA%20DW%20NOTAS.png?raw=true)
+- SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
+- DATA FLOW TASK: Area do fluxo de dados;
+- LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
+
+![VSNOTASDW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/23.2%20-%20FLUXO%20DW%20NOTAS.png?raw=true)
+- OLE DB SOURCE: Origem dos dados, vindo da tabela ST_NOTAS no STAGE;
+	- MODO DE ACESSO AOS DADOS: Comando SQL;
+	- TEXTO DO COMANDO SQL:
+	SELECT [IDNOTA] FROM [LOJA_STAGE].[dbo].[ST_NOTAS]
+	WHERE IDNOTA NOT IN
+	(SELECT IDNOTA FROM LOJA_DW.DBO.DIM_NOTAS)
+- OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_NOTAS no DW.
 ***
 
 ### CRIAÇÃO DA CARGA X NO DW:
 
-![VSX1]()
+![VSXDW1](X)
 - SEQUENCE CONTAINER: Será a divisão das cargas (STAGE E DW);
 - DATA FLOW TASK: Area do fluxo de dados;
 - LIGAÇÃO: Ligue o container da carga STAGE com a carga DW.
 
-![VSX2]()
+![VSXDW2](X)
 - OLE DB SOURCE: Origem dos dados, vindo da tabela ST_X no STAGE;
 	- MODO DE ACESSO AOS DADOS: Comando SQL;
 	- TEXTO DO COMANDO SQL:
-	
+
 - OLE DB DESTINATION: Destino dos dados, indo para a tabela DIM_X no DW.
 ***
-
 
 
 
