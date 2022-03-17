@@ -1553,6 +1553,7 @@ Praticamente o mesmo processo para a criação do DataSource.
 - EXIBIÇÕES DE FONTE DE DADOS -> NOVA EXIBIÇÃO...
 
 ![VSDATASW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28.2%20-%20CONEX%C3%83O%20COM%20A%20FONTE.png?raw=true)
+
 Selecionando o DATASOURCE criado anteriormente...
 - AVANÇAR.
 
@@ -1568,23 +1569,40 @@ Selecionando o DATASOURCE criado anteriormente...
 Nesta etapa será criada todas as dimensões dentro do Visual Studio 2015, que será utilizada na Inteligência de negócio (Business Intelligence).
 Com a Dimensão, será permitido a visualização dos dados e informações por diversos aspectos e perspectivas.
 
-![VSDIMC1]()
+### CRIAÇÃO DA DIM CLIENTE
+![VSDIMC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29%20-%20CRIA%C3%87%C3%83O%20DA%20DIMENS%C3%83O.png?raw=true)
+- Dimensões -> Nova Dimensão...
 
-![VSDIMC2]()
+![VSDIMC2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.2%20-%20METODO%20DE%20CRIA%C3%87%C3%83O.png?raw=true)
+- Usar uma tabela Existente -> Avançar...
 
-![VSDIMC3]()
+![VSDIMC3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.3%20-%20ORIGEM%20DAS%20INFORMA%C3%87%C3%95ES.png?raw=true)
+- Exibição da fonte de dados: Será utilizado o DataSource View criado;
+- Tabela principal: Escolha da tabela no banco DW;
+- Coluna de nome: Coluna que ira representar a Dimensão.
 
-![VSDIMC4]()
+![VSDIMC4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.4%20-%20SELECIONANDO%20ATRIBUTOS(COLUNAS).png?raw=true)
+- Seleção dos Atributos(colunas) que será usado para as analises
+- Obs: A coluna "NOME_COMPLETO" mudou de nome para "IDSK". O nome "IDSK" pode ser trocado para "NOME_COMPLETO" para melhor análise.
 
-![VSDIMC5]()
+![VSDIMC5](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.5%20-%20DIMENS%C3%83O%20CLIENTE.png?raw=true)
+- Nome: Nome da Dimensão;
+- Concluir.
 
-![VSDIMC6]()
+![VSDIMC6](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.6%20-%20HIERARQUIA%20CLIENTES.png?raw=true)
+- Será usado alguns atributos da dimensão para criar hierarquias desejas;
+- Pode ser criado apenas arrastando.
 
-![VSDIMC7]()
+![VSDIMC7](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.7%20-%20PROCESSAMENTO%20DA%20DIM%20CLIENTE.png?raw=true)
 
-![VSDIMC8]()
+  Realização do Processamento da Dimensão criada.
+- Dim CLIENTES -> Processar...
 
-![VSDIMC9]()
+![VSDIMC8](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.8%20-%20EXECUTANDO.png?raw=true)
+- Executar...
+
+
+
 
 
 
