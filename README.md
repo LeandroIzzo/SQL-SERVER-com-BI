@@ -843,7 +843,7 @@ Após a criação de todas as cargas, execute uma por uma.
 # ETAPA 7 - DATA WAREHOUSE E SUAS DIMENSÕES
 Nesta etapa iremos transformar as tabelas em dimensões. Criaremos o inicio e o fim do "registro", e usaremos a IDSK(Surrogate key) como chave primaria. 
 
-##### CRIAÇÃO DO DATABASE DO DW(DATA WAREHOUSE)
+#### CRIAÇÃO DO DATABASE DO DW(DATA WAREHOUSE)
 ```
 CREATE DATABASE LOJA_DW
 GO
@@ -1517,6 +1517,75 @@ Dentro do "EXECUTE SQL TASK"
 SQLStatement: Digite o comando para executar a procedure criada "EXEC CARGA_FATODW"
 
 ***
+
+# ETAPA 11 - CRIAÇÃO DO CUBO NO ANALYSIS SERVICES
+Nesta etapa iremos realizar a criação do CUBO no analysis services, a criação de um DataSource e também um DataSource View.
+
+### CRIAÇÃO DO PROJETO OLAP
+Primeiro, iremos adicionar um novo projeto.
+
+![VSCUBO1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/26%20-%20CRIA%C3%87%C3%83O%20DO%20OLAP-CUBO.png?raw=true)
+- Arquivo -> Adicionar -> Novo Projeto
+
+![VSCUBO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/26.2%20-%20PROJETO%20MULTIDIMENSIONAL.png?raw=true)
+- Business Intelligence -> Analysis Services -> Projeto Multidimensional...
+
+***
+### CRIAÇÃO DA FONTE DE DADOS (DATASOURCE)
+![VSDATAS1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27%20-%20CRIA%C3%87%C3%83O%20DA%20FONTE%20DE%20DADOS.png?raw=true)
+- FONTE DE DADOS -> NOVA FONTE DE DADOS...
+
+![VSDATAS2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27.2%20-%20CONEX%C3%83O%20DA%20FONTE.png?raw=true)
+- Criar uma fonte de dados... -> SEU BANCO DW -> Avançar.
+
+![VSDATAS3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27.3%20-%20LOGIN.png?raw=true)
+- Usar um nome de usuário e senha...
+- Seu nome de Usuário;
+- Senha.
+
+![VSDATAS4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27.4%20-%20NOME%20DA%20FONTE.png?raw=true)
+Escolha um nome para sua fonte de dados.
+
+### CRIAÇÃO DA EXIBIÇÕES DA FONTE DE DADOS (DATASOURCE VIEW)
+Praticamente o mesmo processo para a criação do DataSource.
+
+![VSDATASW1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28%20-%20CRIA%C3%87%C3%83O%20DA%20EXIBI%C3%87%C3%83O%20DA%20FONTE%20DE%20DADOS.png?raw=true)
+- EXIBIÇÕES DE FONTE DE DADOS -> NOVA EXIBIÇÃO...
+
+![VSDATASW2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28.2%20-%20CONEX%C3%83O%20COM%20A%20FONTE.png?raw=true)
+Selecionando o DATASOURCE criado anteriormente...
+- AVANÇAR.
+
+![VSDATASW3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28.3%20-%20TABELAS%20E%20EXIBI%C3%87%C3%95ES%20DESEJADAS.png?raw=true)
+- Selecione todas as Dimensões (DIM_CLIENTE, ETC);
+- Clique na seta ">";
+- Avançar.
+
+![VSDATASW4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28.4%20-%20NOME%20DO%20DATASOURCE%20VIEW.png?raw=true)
+- NOME: Nome que desejar.
+
+# ETAPA 12 - CRIAÇÃO DAS DIMENSÕES DENTRO DO OLAP/CUBO
+Nesta etapa será criada todas as dimensões dentro do Visual Studio 2015, que será utilizada na Inteligência de negócio (Business Intelligence).
+Com a Dimensão, será permitido a visualização dos dados e informações por diversos aspectos e perspectivas.
+
+![VSDIMC1]()
+
+![VSDIMC2]()
+
+![VSDIMC3]()
+
+![VSDIMC4]()
+
+![VSDIMC5]()
+
+![VSDIMC6]()
+
+![VSDIMC7]()
+
+![VSDIMC8]()
+
+![VSDIMC9]()
+
 
 
 
