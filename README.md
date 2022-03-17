@@ -1568,6 +1568,7 @@ Selecionando o DATASOURCE criado anteriormente...
 # ETAPA 12 - CRIAÇÃO DAS DIMENSÕES DENTRO DO OLAP/CUBO
 Nesta etapa será criada todas as dimensões dentro do Visual Studio 2015, que será utilizada na Inteligência de negócio (Business Intelligence).
 Com a Dimensão, será permitido a visualização dos dados e informações por diversos aspectos e perspectivas.
+o Processo de Criação das Dimensões é sempre o mesmo, apenas mudando os atributos, e a coluna que ira representar a dimensão.
 
 ### CRIAÇÃO DA DIM CLIENTE
 ![VSDIMC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29%20-%20CRIA%C3%87%C3%83O%20DA%20DIMENS%C3%83O.png?raw=true)
@@ -1601,7 +1602,23 @@ Com a Dimensão, será permitido a visualização dos dados e informações por 
 ![VSDIMC8](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.8%20-%20EXECUTANDO.png?raw=true)
 - Executar...
 
+### CRIAÇÃO DA DIM FUNCIONARIO
+![VSDIMF1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30%20-%20ORIGEM%20DOS%20DADOS%20FUNCIONARIOS.png?raw=true)
+- Exibição da fonte de dados: Será utilizado o DataSource View criado;
+- Tabela principal: Escolha da tabela DIM_FUNCIONARIOS no banco DW;
+- Coluna de nome: Coluna que ira representar a Dimensão.
 
+![VSDIMF2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30.2%20-%20ATRIBUTOS%20FUNCIONARIOS.png?raw=true)
+- Seleção dos Atributos(colunas) que será usado para as analises;
+- Obs: A coluna "FUNCIONARIO" mudou de nome para "IDSK".
+
+![VSDIMF3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30.3%20-%20CONCLUS%C3%83O%20FUNCIONARIOS.png?raw=true)
+- Nome: Nome da Dimensão;
+- Concluir.
+
+![VSDIMF4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
+- Troca de nome do atributo "IDSK" para "NOME_FUNCIONARIO".
+#### Após esses processos, foi realizado o processamento igual a primeira dimensão.
 
 
 
