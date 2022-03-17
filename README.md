@@ -1529,8 +1529,8 @@ Primeiro, iremos adicionar um novo projeto.
 
 ![VSCUBO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/26.2%20-%20PROJETO%20MULTIDIMENSIONAL.png?raw=true)
 - Business Intelligence -> Analysis Services -> Projeto Multidimensional...
-
 ***
+
 ### CRIAÇÃO DA FONTE DE DADOS (DATASOURCE)
 ![VSDATAS1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27%20-%20CRIA%C3%87%C3%83O%20DA%20FONTE%20DE%20DADOS.png?raw=true)
 - FONTE DE DADOS -> NOVA FONTE DE DADOS...
@@ -1545,6 +1545,7 @@ Primeiro, iremos adicionar um novo projeto.
 
 ![VSDATAS4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/27.4%20-%20NOME%20DA%20FONTE.png?raw=true)
 Escolha um nome para sua fonte de dados.
+***
 
 ### CRIAÇÃO DA EXIBIÇÕES DA FONTE DE DADOS (DATASOURCE VIEW)
 Praticamente o mesmo processo para a criação do DataSource.
@@ -1564,11 +1565,13 @@ Selecionando o DATASOURCE criado anteriormente...
 
 ![VSDATASW4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/28.4%20-%20NOME%20DO%20DATASOURCE%20VIEW.png?raw=true)
 - NOME: Nome que desejar.
+***
 
 # ETAPA 12 - CRIAÇÃO DAS DIMENSÕES DENTRO DO OLAP/CUBO
 Nesta etapa será criada todas as dimensões dentro do Visual Studio 2015, que será utilizada na Inteligência de negócio (Business Intelligence).
 Com a Dimensão, será permitido a visualização dos dados e informações por diversos aspectos e perspectivas.
 o Processo de Criação das Dimensões é sempre o mesmo, apenas mudando os atributos, e a coluna que ira representar a dimensão.
+
 
 ### CRIAÇÃO DA DIM CLIENTE
 ![VSDIMC1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29%20-%20CRIA%C3%87%C3%83O%20DA%20DIMENS%C3%83O.png?raw=true)
@@ -1601,6 +1604,7 @@ o Processo de Criação das Dimensões é sempre o mesmo, apenas mudando os atri
 
 ![VSDIMC8](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/29.8%20-%20EXECUTANDO.png?raw=true)
 - Executar...
+***
 
 ### CRIAÇÃO DA DIM FUNCIONARIO
 ![VSDIMF1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30%20-%20ORIGEM%20DOS%20DADOS%20FUNCIONARIOS.png?raw=true)
@@ -1618,7 +1622,8 @@ o Processo de Criação das Dimensões é sempre o mesmo, apenas mudando os atri
 
 ![VSDIMF4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/30.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
 - Troca de nome do atributo "IDSK" para "NOME_FUNCIONARIO".
-#### Após esses processos, foi realizado o processamento igual a primeira dimensão.
+Após esses processos, foi realizado o processamento igual a DIM CLIENTES.
+***
 
 
 
