@@ -1640,9 +1640,25 @@ Após esses processos, foi realizado o processamento igual a DIM CLIENTES.
 
 ![VSDIMP4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/31.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
 - Troca de nome do atributo "IDSK" para "PRODUTO".
-Após esses processos, foi realizado o processamento igual a DIM CLIENTES.
+Após esses processos, foi realizado o processamento.
 
+### CRIAÇÃO DA DIM TEMPO
+![VSDIMT1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/32%20-%20ORIGEM%20DOS%20DADOS%20TEMPO.png?raw=true)
+- Exibição da fonte de dados: Será utilizado o DataSource View criado;
+- Tabela principal: Escolha da tabela DIM TEMPO no banco DW;
+- Coluna de nome: Coluna que ira representar a Dimensão.
 
+![VSDIMT2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/32.2%20-%20ATRIBUTOS%20DO%20TEMPO.png?raw=true)
+- Seleção dos Atributos(colunas) que será usado para as analises;
+- Obs: A coluna "DATA" mudou de nome para "IDSK".
+
+![VSDIMT3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/32.3%20-%20CONCLUS%C3%83O%20TEMPO.png?raw=true)
+- Nome: Nome da Dimensão;
+- Concluir.
+
+![VSDIMT4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/33.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
+- Troca de nome do atributo "IDSK" para "PRODUTO".
+Após esses processos, foi realizado o processamento.
 
 
 
