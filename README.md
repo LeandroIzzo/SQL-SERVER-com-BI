@@ -1664,13 +1664,38 @@ Após esses processos, foi realizado o processamento.
 ***
 
 ### CRIAÇÃO DO CUBO DE VENDAS
-![VSCUBO1]()
-![VSCUBO2]()
-![VSCUBO3]()
-![VSCUBO4]()
-![VSCUBO5]()
-![VSCUBO6]()
-![VSCUBO7]()
+Após a criação e processamento de todas as dimensões, então foi feito o CUBO de vendas.
+
+![VSCUBO1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34%20-%20CRIA%C3%87%C3%83O%20DO%20CUBO.png?raw=true)
+- Cubos -> Novo Cubo...
+
+![VSCUBO2](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.2%20-%20METODOS%20DO%20CUBO.png?raw=true)
+- Usar tabelas existentes;
+- Avançar.
+
+![VSCUBO3](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.3%20-%20MEDIDAS%20(FATO).png?raw=true)
+- FATO: Tabela que foi criada para ser usada como grupo de medidas de vendas.
+
+![VSCUBO4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.4%20-%20MEDIDAS%20DA%20FATO.png?raw=true)
+- Selecionamento das medidas para ser utilizada no cubo.
+
+![VSCUBO5](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.5%20-%20DIMENS%C3%95ES%20UTILIZADAS.png?raw=true)
+- Selecionamento das dimensões utilizadas no cubo.
+
+![VSCUBO6](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.6%20-%20FINALIZA%C3%87%C3%83O%20DO%20CUBO.png?raw=true)
+- Nome do cubo: nome que será utilizado no cubo;
+- Concluir.
+
+![VSCUBO7](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/34.7%20-%20CUBO%20CRIADO.png?raw=true)
+- Estrutura final do Cubo.
+
+# ETAPA 13 - CRIAÇÃO DO Reporting Services(Shared DataSource, DataSet)
+Nesta etapa será criado o Reporting Services dentro do VS2015, também será feito um Shared DataSource e um DataSet.
+Foi criado um arquivo dentro da pasta do projeto, e dentro dele será guardado as informações.
+
+
+
+
 
 
 
