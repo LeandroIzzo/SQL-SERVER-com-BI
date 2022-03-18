@@ -1518,7 +1518,7 @@ SQLStatement: Digite o comando para executar a procedure criada "EXEC CARGA_FATO
 
 ***
 
-# ETAPA 11 - CRIAÇÃO DO CUBO NO ANALYSIS SERVICES
+# ETAPA 11 - CRIAÇÃO DAS DIMENSÕES DO CUBO DE VENDAS NO ANALYSIS SERVICES
 Nesta etapa iremos realizar a criação do CUBO no analysis services, a criação de um DataSource e também um DataSource View.
 
 ### CRIAÇÃO DO PROJETO OLAP
@@ -1624,6 +1624,7 @@ o Processo de Criação das Dimensões é sempre o mesmo, apenas mudando os atri
 - Troca de nome do atributo "IDSK" para "NOME_FUNCIONARIO".
 Após esses processos, foi realizado o processamento igual a DIM CLIENTES.
 ***
+
 ### CRIAÇÃO DA DIM PRODUTOS
 ![VSDIMP1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/31%20-%20ORIGEM%20DOS%20DADOS%20PRODUTOS.png?raw=true)
 - Exibição da fonte de dados: Será utilizado o DataSource View criado;
@@ -1641,6 +1642,7 @@ Após esses processos, foi realizado o processamento igual a DIM CLIENTES.
 ![VSDIMP4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/31.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
 - Troca de nome do atributo "IDSK" para "PRODUTO".
 Após esses processos, foi realizado o processamento.
+***
 
 ### CRIAÇÃO DA DIM TEMPO
 ![VSDIMT1](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/32%20-%20ORIGEM%20DOS%20DADOS%20TEMPO.png?raw=true)
@@ -1659,6 +1661,8 @@ Após esses processos, foi realizado o processamento.
 ![VSDIMT4](https://github.com/LeandroIzzo/SQL-SERVER-com-BI/blob/main/VISUAL%20STUDIO%20PASSOS/33.4%20-%20RENOMEANDO%20O%20IDSK.png?raw=true)
 - Troca de nome do atributo "IDSK" para "PRODUTO".
 Após esses processos, foi realizado o processamento.
+***
+
 
 
 
