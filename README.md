@@ -1663,6 +1663,15 @@ Após esses processos, foi realizado o processamento.
 Após esses processos, foi realizado o processamento.
 ***
 
+### CRIAÇÃO DO CUBO DE VENDAS
+![VSCUBO1]()
+![VSCUBO2]()
+![VSCUBO3]()
+![VSCUBO4]()
+![VSCUBO5]()
+![VSCUBO6]()
+![VSCUBO7]()
+
 
 
 
