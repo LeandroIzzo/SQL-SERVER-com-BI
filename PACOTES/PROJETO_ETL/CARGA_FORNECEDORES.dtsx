@@ -1,0 +1,1678 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/14/2022 9:16:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-KI51GGM"
+  DTS:CreatorName="DESKTOP-KI51GGM\user"
+  DTS:DTSID="{53BCBE9E-701A-4693-801E-D27F0705DDC0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="CARGA_FORNECEDORES"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{69423989-E530-499B-8326-9B304C7884FA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{64F8CF07-E6BF-4F92-B9FD-89A3BF2FFF9A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DW\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{0478AD35-1C42-4DC5-AED6-2437FEF64B90}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Coluna Derivada"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[FIM]"
+                          dataType="dbTimeStamp"
+                          description="FIM"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[FIM]"
+                          name="FIM"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Coluna Derivada 1"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[INICIO]"
+                          dataType="dbTimeStamp"
+                          description="INICIO"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[INICIO]"
+                          name="INICIO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="Comando OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;2"
+                  description="Executa uma instrução SQL para cada linha em um fluxo de dados. Por exemplo, chame um procedimento armazenado 'new employee setup' para cada linha da tabela 'new employees'. Observação: a execução de uma instrução SQL para cada linha de um fluxo de dados grande pode demorar."
+                  name="Comando OLE DB"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DIM_FORNECEDORES] SET [FIM] = ? WHERE [IDFORNECEDOR] = ? AND [FIM] IS NULL</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{3EE60A60-0C64-4B95-B76E-8AE999ACA78F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+                      errorOrTruncationOperation="Execução de Comando"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Comando OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]" />
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[FIM]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FIM"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[FIM]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          dataType="dbTimeStamp"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Comando OLE DB]"
+                      exclusionGroup="1"
+                      name="Saída de Comando OLE DB"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Comando OLE DB"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta"
+                  componentClassID="Microsoft.SCD"
+                  contactInfo="Dimensão de Alteração Lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;3"
+                  description="Atualiza uma dimensão de data warehouse do SQL Server Analysis Services. Atualize registros da dimensão que já estejam presentes e insira os registros que não estão. Por exemplo, atualize a tabela DimProduct do banco de dados OLAP AdventureWorksDW com dados da tabela Products do banco de dados OLTP AdventureWorks."
+                  name="Dimensão de Alteração Lenta"
+                  version="3">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a instrução SELECT usada para criar um conjunto de linhas de esquema."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [FORNECEDOR], [IDFORNECEDOR],[INICIO],[FIM] FROM [dbo].[DIM_FORNECEDORES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a cláusula WHERE na instrução SELECT que seleciona a linha atual entre as linhas com chaves de negócios idênticas."
+                      name="CurrentRowWhere">[INICIO] IS NOT NULL AND [FIM] IS NULL</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as atualizações de atributo de histórico são direcionadas para a saída de transformação para atualizações de atributo de alteração."
+                      name="UpdateChangingAttributeHistory">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se a transformação falhará quando as colunas com atributos fixos contiverem alterações."
+                      name="FailOnFixedAttributeChange">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome da coluna para o membro inferido."
+                      name="InferredMemberIndicator"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as atualizações de membro inferido são detectadas."
+                      name="EnableInferredMember">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se a transformação falhará quando uma pesquisa de registro existente falhar."
+                      name="FailOnLookupFailure">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica que todas as linhas na entrada são novas ou a transformação detecta o tipo de alteração."
+                      name="IncomingRowChangeType"
+                      typeConverter="IncomingRowChangeType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Connections[LookupConnection]"
+                      connectionManagerID="{3EE60A60-0C64-4B95-B76E-8AE999ACA78F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_DW]"
+                      description="Define a conexão a ser usada para pesquisas na tabela de dimensão"
+                      name="LookupConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]"
+                      name="Entrada de Dimensão de Alteração Lenta">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[FORNECEDOR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="FORNECEDOR"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[FORNECEDOR]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">3</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IDFORNECEDOR]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">1</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="FORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IDFORNECEDOR]"
+                          dataType="i4"
+                          name="IDFORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[INICIO]"
+                          dataType="dbTimeStamp"
+                          name="INICIO" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[FIM]"
+                          dataType="dbTimeStamp"
+                          name="FIM" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída Inalterada]"
+                      description="Linhas inalteradas"
+                      exclusionGroup="1"
+                      name="Saída Inalterada"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Nova Saída]"
+                      description="Novas linhas"
+                      exclusionGroup="1"
+                      name="Nova Saída"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída de Atributo Fixo]"
+                      description="Linhas com alterações em colunas marcadas com FixedAttribute"
+                      exclusionGroup="1"
+                      name="Saída de Atributo Fixo"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída de Atualizações de Atributo de Alteração]"
+                      description="Essas linhas contêm novas informações para as alterações da coluna ChangingAttribute (Type 1)"
+                      exclusionGroup="1"
+                      name="Saída de Atualizações de Atributo de Alteração"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída de Inserções de Atributo de Histórico]"
+                      description="O resultado de alterações de HistoricalAttribute (Type 2) nessas novas linhas"
+                      exclusionGroup="2"
+                      name="Saída de Inserções de Atributo de Histórico"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída de Atualizações de Membro Inferido]"
+                      description="Informações para atualizar a linha de dimensão inicial sem preenchimento"
+                      exclusionGroup="1"
+                      name="Saída de Atualizações de Membro Inferido"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="DIMENSÃO FORNECEDORES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[DIM_FORNECEDORES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Connections[OleDbConnection]"
+                      connectionManagerID="{3EE60A60-0C64-4B95-B76E-8AE999ACA78F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IDFORNECEDOR]" />
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].Columns[FORNECEDOR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="FORNECEDOR"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[FORNECEDOR]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[FORNECEDOR]" />
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].Columns[INICIO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="INICIO"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[INICIO]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[INICIO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDSK]"
+                          dataType="i4"
+                          name="IDSK" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          dataType="i4"
+                          name="IDFORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="FORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[INICIO]"
+                          dataType="dbTimeStamp"
+                          name="INICIO" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[FIM]"
+                          dataType="dbTimeStamp"
+                          name="FIM" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="STAGE FORNECEDORES"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [IDFORNECEDOR]
+      ,[FORNECEDOR]
+  FROM [LOJA_STAGE].[dbo].[ST_FORNECEDORES]</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Connections[OleDbConnection]"
+                      connectionManagerID="{6D39C69D-1219-4471-A0B1-69556AED3C3D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          name="IDFORNECEDOR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[FORNECEDOR]"
+                          length="30"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]"
+                          name="FORNECEDOR"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          dataType="i4"
+                          name="IDFORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="FORNECEDOR" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          name="IDFORNECEDOR" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[FORNECEDOR]"
+                          name="FORNECEDOR" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+                  name="Unir Tudo"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                      name="Unir Tudo Entrada 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IDFORNECEDOR]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[FORNECEDOR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="FORNECEDOR"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[FORNECEDOR]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                      hasSideEffects="true"
+                      name="Entrada Unir Tudo 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IDFORNECEDOR]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[FORNECEDOR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="FORNECEDOR"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[FORNECEDOR]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Entrada Unir Tudo 2]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Entrada Unir Tudo 2">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1]"
+                      name="Unir Tudo Saída 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IDFORNECEDOR]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IDFORNECEDOR]"
+                          name="IDFORNECEDOR" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[FORNECEDOR]"
+                          name="FORNECEDOR" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Nova Saída]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                  name="Nova Saída"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Nova Saída]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada1]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Comando OLE DB]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                  name="Saída de Comando OLE DB"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB.Outputs[Saída de Comando OLE DB]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Inserções de Atributo de Histórico]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                  name="Saída de Inserções de Atributo de Histórico"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Outputs[Saída de Inserções de Atributo de Histórico]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Origem OLE DB]" />
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Unir Tudo Saída 1]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+                  name="Unir Tudo Saída 1"
+                  startId="Package\DW\Tarefa Fluxo de Dados\Unir Tudo.Outputs[Unir Tudo Saída 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STAGE AREA"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{92A0E1FF-D8AD-45CA-8A15-C6F7517E22A5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STAGE AREA">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{C222C1C1-9CFB-45E9-B592-D78665B019CE}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="OLTP FORNECEDORES"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT IDFORNECEDOR, FORNECEDOR FROM FORNECEDORES</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Connections[OleDbConnection]"
+                      connectionManagerID="{A8B5431C-315F-4975-8B0B-B6797E1B66A5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_INSTRUMENTOS_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          name="IDFORNECEDOR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[FORNECEDOR]"
+                          length="25"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]"
+                          name="FORNECEDOR"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          dataType="i4"
+                          name="IDFORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].ExternalColumns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="FORNECEDOR" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[IDFORNECEDOR]"
+                          name="IDFORNECEDOR" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[FORNECEDOR]"
+                          name="FORNECEDOR" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="STAGE FORNECEDORES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_FORNECEDORES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Connections[OleDbConnection]"
+                      connectionManagerID="{6D39C69D-1219-4471-A0B1-69556AED3C3D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].Columns[IDFORNECEDOR]"
+                          cachedDataType="i4"
+                          cachedName="IDFORNECEDOR"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[IDFORNECEDOR]" />
+                        <inputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].Columns[FORNECEDOR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="FORNECEDOR"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[FORNECEDOR]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB].Columns[FORNECEDOR]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDFORNECEDOR]"
+                          dataType="i4"
+                          name="IDFORNECEDOR" />
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB].ExternalColumns[FORNECEDOR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="FORNECEDOR" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STAGE AREA\TRUNCATE FORNECEDORES"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{221856E3-FA48-4F4E-A8B2-5A33D588A2A4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE FORNECEDORES"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6D39C69D-1219-4471-A0B1-69556AED3C3D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE ST_FORNECEDORES" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STAGE AREA.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{B72B59B0-79E1-4DE8-A8F5-2F065AF1604B}"
+          DTS:From="Package\STAGE AREA\TRUNCATE FORNECEDORES"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\STAGE AREA\Tarefa Fluxo de Dados" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{025FA6C9-8D83-4198-997B-201959C46F48}"
+      DTS:From="Package\STAGE AREA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\DW\Tarefa Fluxo de Dados"
+          TopLeft="22,61" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="230,165"
+          Size="230,208"
+          Id="Package\DW"
+          TopLeft="467,106" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          TopLeft="34,97" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\STAGE AREA\TRUNCATE FORNECEDORES"
+          TopLeft="34,25" />
+        <EdgeLayout
+          Id="Package\STAGE AREA.PrecedenceConstraints[Restrição]"
+          TopLeft="140.5,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14,30"
+              Start="0,0"
+              End="-14,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="-4,15" />
+                  <mssgle:LineSegment
+                    End="-10,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10,15"
+                    Point2="-14,15"
+                    Point3="-14,19" />
+                  <mssgle:LineSegment
+                    End="-14,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="252,194"
+          Size="252,237"
+          Id="Package\STAGE AREA"
+          TopLeft="111,90" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="363,209.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104,0"
+              Start="0,0"
+              End="96.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DW\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\Unir Tudo"
+          TopLeft="327.714285714286,157.785714285714" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada"
+          TopLeft="597.5,63.7857142857143" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO FORNECEDORES"
+          TopLeft="110.928571428572,234.928571428572" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\Coluna Derivada 1"
+          TopLeft="114.857142857143,155.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES"
+          TopLeft="45.1428571428572,61.2142857142857" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\Comando OLE DB"
+          TopLeft="572.928571428571,154.357142857143" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta"
+          TopLeft="283.142857142857,58.9285714285714" />
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Unir Tudo Saída 1]"
+          TopLeft="327.714285714286,177.642857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47.8571428571428,0"
+              Start="0,0"
+              End="-40.3571428571428,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-40.3571428571428,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="238.142857142857,81.0714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45,0"
+              Start="0,0"
+              End="37.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Inserções de Atributo de Histórico]"
+          TopLeft="500.142857142857,82.3571428571428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.357142857143,0"
+              Start="0,0"
+              End="89.857142857143,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="89.857142857143,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-51.1141238839285,5,192.085390625,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Comando OLE DB]"
+          TopLeft="572.928571428571,177.071428571429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-120.214285714286,0"
+              Start="0,0"
+              End="-112.714285714286,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-112.714285714286,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada1]"
+          TopLeft="197.357142857143,197.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.071428571429,37.428571428572"
+              Start="0,0"
+              End="20.071428571429,29.928571428572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.714285714286" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.714285714286"
+                    Point2="0,18.714285714286"
+                    Point3="4,18.714285714286" />
+                  <mssgle:LineSegment
+                    End="16.071428571429,18.714285714286" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.071428571429,18.714285714286"
+                    Point2="20.071428571429,18.714285714286"
+                    Point3="20.071428571429,22.714285714286" />
+                  <mssgle:LineSegment
+                    End="20.071428571429,29.928571428572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada]"
+          TopLeft="675.5,105.785714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.5714285714287,48.5714285714286"
+              Start="0,0"
+              End="-21.5714285714287,41.0714285714286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2857142857143"
+                    Point2="0,24.2857142857143"
+                    Point3="-4,24.2857142857143" />
+                  <mssgle:LineSegment
+                    End="-17.5714285714287,24.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.5714285714287,24.2857142857143"
+                    Point2="-21.5714285714287,24.2857142857143"
+                    Point3="-21.5714285714287,28.2857142857143" />
+                  <mssgle:LineSegment
+                    End="-21.5714285714287,41.0714285714286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Nova Saída]"
+          TopLeft="390.928571428571,100.928571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.8571428571429"
+              Start="0,0"
+              End="0,49.3571428571429">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.3571428571429" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.993359375,19.5110909598214,49.98671875,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="DEFININDO A BUSINNES KEY E O INICIO E FIM"
+          ParentId="Package\DW\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="276,40"
+          Id="4aeaef12-a0f9-48c8-b58e-ebb50ccb8a36"
+          TopLeft="253,25" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Tarefa Fluxo de Dados\STAGE FORNECEDORES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Tarefa Fluxo de Dados\Dimensão de Alteração Lenta">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{3EE60A60-0C64-4B95-B76E-8AE999ACA78F}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DIM_FORNECEDORES]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;STAGE FORNECEDORES.Saídas[Saída de Origem OLE DB].Colunas[FORNECEDOR]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FORNECEDOR&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;STAGE FORNECEDORES.Saídas[Saída de Origem OLE DB].Colunas[IDFORNECEDOR]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;IDFORNECEDOR&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Unir Tudo&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Inserir Destino&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;INICIO&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;FIM&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES"
+          TopLeft="384,140" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES"
+          TopLeft="123,138" />
+        <EdgeLayout
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="309,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75,0"
+              Start="0,0"
+              End="67.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="67.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ORIGEM DOS DADOS&#xA;"
+          ParentId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="144,56"
+          Id="eed258b7-665f-4ce9-9fcf-2c64e8aeeba3"
+          TopLeft="152,110" />
+        <AnnotationLayout
+          Text="DESTINO DOS DADOS&#xA;"
+          ParentId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="147,56"
+          Id="4f58c22b-2cd0-4c06-b074-1bee9448cb34"
+          TopLeft="394,111" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP FORNECEDORES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE FORNECEDORES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

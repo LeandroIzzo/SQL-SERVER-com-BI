@@ -1,0 +1,875 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/14/2022 9:30:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-KI51GGM"
+  DTS:CreatorName="DESKTOP-KI51GGM\user"
+  DTS:DTSID="{E5C3B1CA-522A-40F0-B95D-9BB5536CD9D3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="CARGA_MARCAS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{FE2A628A-6F5A-45CC-A42D-32BCB87AB7C6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{C97BE662-7E0B-4EC6-AD67-76039B9C0F73}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DW\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{15DF902B-435E-4E14-8877-434001EF0855}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="DIMENSÃO MARCAS"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[DIM_MARCAS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Connections[OleDbConnection]"
+                      connectionManagerID="{3EE60A60-0C64-4B95-B76E-8AE999ACA78F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].Columns[IDMARCA]"
+                          cachedDataType="i4"
+                          cachedName="IDMARCA"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDMARCA]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]" />
+                        <inputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].Columns[MARCA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="MARCA"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[MARCA]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDSK]"
+                          dataType="i4"
+                          name="IDSK" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDMARCA]"
+                          dataType="i4"
+                          name="IDMARCA" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="MARCA" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="STAGE MARCAS"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT IDMARCA, MARCA FROM ST_MARCAS
+WHERE IDMARCA NOT IN
+(SELECT IDMARCA FROM LOJA_DW.DBO.DIM_MARCAS)</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Connections[OleDbConnection]"
+                      connectionManagerID="{6D39C69D-1219-4471-A0B1-69556AED3C3D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[IDMARCA]"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]"
+                          name="IDMARCA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[MARCA]"
+                          length="30"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]"
+                          name="MARCA"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[IDMARCA]"
+                          dataType="i4"
+                          name="IDMARCA" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="MARCA" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[IDMARCA]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[IDMARCA]"
+                          name="IDMARCA" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[MARCA]"
+                          name="MARCA" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STAGE AREA"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contêiner da Sequência"
+      DTS:DTSID="{50E1EB7A-9C48-45D4-BC42-7C46FA2C4EF7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STAGE AREA">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{A6D850DC-A052-405F-B285-790545F37DE0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="OLTP MARCAS"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[MARCAS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT IDMARCA, MARCA FROM MARCAS</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Connections[OleDbConnection]"
+                      connectionManagerID="{A8B5431C-315F-4975-8B0B-B6797E1B66A5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_INSTRUMENTOS_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[IDMARCA]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]"
+                          name="IDMARCA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[MARCA]"
+                          length="25"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]"
+                          name="MARCA"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[IDMARCA]"
+                          dataType="i4"
+                          name="IDMARCA" />
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].ExternalColumns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="MARCA" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[IDMARCA]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[IDMARCA]"
+                          name="IDMARCA" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[MARCA]"
+                          name="MARCA" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="STAGE MARCAS"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_MARCAS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Connections[OleDbConnection]"
+                      connectionManagerID="{6D39C69D-1219-4471-A0B1-69556AED3C3D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.LOJA_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].Columns[IDMARCA]"
+                          cachedDataType="i4"
+                          cachedName="IDMARCA"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDMARCA]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[IDMARCA]" />
+                        <inputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].Columns[MARCA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="MARCA"
+                          externalMetadataColumnId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[MARCA]"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB].Columns[MARCA]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[IDMARCA]"
+                          dataType="i4"
+                          name="IDMARCA" />
+                        <externalMetadataColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB].ExternalColumns[MARCA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="MARCA" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STAGE AREA\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+                  endId="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STAGE AREA\TRUNCATE MARCAS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarefa Executar SQL"
+          DTS:DTSID="{04F14E8D-BB8A-436A-BE17-0B5043BFED7F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE MARCAS"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6D39C69D-1219-4471-A0B1-69556AED3C3D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE ST_MARCAS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STAGE AREA.PrecedenceConstraints[Restrição]"
+          DTS:CreationName=""
+          DTS:DTSID="{6FB81200-967E-471A-BD4A-F4D2C8E14DF7}"
+          DTS:From="Package\STAGE AREA\TRUNCATE MARCAS"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restrição"
+          DTS:To="Package\STAGE AREA\Tarefa Fluxo de Dados" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{B38DADD3-D709-4819-94E8-310F0EF44D51}"
+      DTS:From="Package\STAGE AREA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\DW\Tarefa Fluxo de Dados"
+          TopLeft="30,53" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="249,178"
+          Size="249,221"
+          Id="Package\DW"
+          TopLeft="406,90" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          TopLeft="13,79" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\STAGE AREA\TRUNCATE MARCAS"
+          TopLeft="21,12" />
+        <EdgeLayout
+          Id="Package\STAGE AREA.PrecedenceConstraints[Restrição]"
+          TopLeft="106.75,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="228,176"
+          Size="228,219"
+          Id="Package\STAGE AREA"
+          TopLeft="110,86" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="338,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68,0"
+              Start="0,0"
+              End="60.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="60.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DW\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS"
+          TopLeft="95,84" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS"
+          TopLeft="347,84" />
+        <EdgeLayout
+          Id="Package\DW\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="249,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,0"
+              Start="0,0"
+              End="90.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Tarefa Fluxo de Dados\DIMENSÃO MARCAS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Tarefa Fluxo de Dados\STAGE MARCAS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS"
+          TopLeft="404,146" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS"
+          TopLeft="181,146" />
+        <EdgeLayout
+          Id="Package\STAGE AREA\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          TopLeft="328,167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76,0"
+              Start="0,0"
+              End="68.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ORIGEM DOS DADOS&#xA;"
+          ParentId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="144,56"
+          Id="fc7fee49-f21c-4ada-a1c5-e148e34ed098"
+          TopLeft="181,118" />
+        <AnnotationLayout
+          Text="DESTINO DOS DADOS&#xA;"
+          ParentId="Package\STAGE AREA\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="147,56"
+          Id="72411028-3f7b-4e37-a3f0-df3768eeacfc"
+          TopLeft="404,117" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados\OLTP MARCAS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STAGE AREA\Tarefa Fluxo de Dados\STAGE MARCAS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
